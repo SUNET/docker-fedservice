@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /src/fedservice/setup_federation
-./entity.py $1
+cd /
+./entity.py data

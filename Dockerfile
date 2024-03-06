@@ -13,6 +13,7 @@ RUN pip3 install --upgrade pip setuptools
 COPY requirements.txt requirements.txt
 COPY start.sh /
 RUN pip3 install -r requirements.txt
+RUN cp /src/fedservice/setup_federation/entity.py /
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 CMD ["/start.sh"] 
