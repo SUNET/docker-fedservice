@@ -17,4 +17,4 @@ RUN cp /src/fedservice/setup_federation/entity.py /
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 CMD ["/start.sh"] 
-EXPOSE 7003
+EXPOSE 8443
