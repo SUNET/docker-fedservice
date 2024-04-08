@@ -1,0 +1,48 @@
+version: '3.2'
+
+services:
+  always-https:
+    image: docker.sunet.se/always-https
+    ports:
+      - '80:80'
+    environment:
+      - 'ACME_URL=http://acme-c.sunet.se/'
+
+  ta_eu:
+    image: docker.sunet.se/sunet/docker-fedservice:latest
+    ports:
+      - '7001:8443'
+    volumes:
+      - '/opt/openidfed/trust_anchor-eu:/data'
+      - '/etc/dehydrated/certs/openidfed-test-1.sunet.se:/certs'
+
+  #ta_edu:
+  #  image: docker.sunet.se/sunet/docker-fedservice:latest
+  #  ports:
+  #    - '7002:8443'
+  #  volumes:
+  #    - '/opt/openidfed/trust_anchor-education:/data'
+  #    - '/etc/dehydrated/certs/openidfed-test-1.sunet.se:/certs'
+  #ta_social:
+  #  image: docker.sunet.se/sunet/docker-fedservice:latest
+  #  ports:
+  #    - '7003:8443'
+  #  volumes:
+  #    - '/opt/openidfed/trust_anchor-social_security:/data'
+  #    - '/etc/dehydrated/certs/openidfed-test-1.sunet.se:/certs'
+
+  wallet_provider:
+    image: docker.sunet.se/sunet/docker-fedservice:latest
+    ports:
+      - '5001:8443'
+    volumes:
+      - '/opt/openidfed/wallet_provider:/data'
+      - '/etc/dehydrated/certs/openidfed-test-1.sunet.se:/certs'
+
+  tmi:
+    image: docker.sunet.se/sunet/docker-fedservice:latest
+    ports:
+      - '6001:8443'
+    volumes:
+      - '/opt/openidfed/trust_mark_issuer:/data'
+      - '/etc/dehydrated/certs/openidfed-test-1.sunet.se:/certs'
