@@ -1,0 +1,17 @@
+---
+git:
+  branch: main
+triggers:
+  cron: "@daily"
+clean_workspace: true
+builders:
+  - docker
+docker_name: fedservice
+docker_tags:
+  - "latest"
+docker_no_cache: true
+docker_force_pull: false
+environment_variables:
+  UPSTREAM_VERSION: "master"
+pre_build_script:
+  - ./build.sh
